@@ -1,0 +1,158 @@
+@use "../abstract/variables" as *;
+@use "../abstract/mixins" as *;
+
+.map-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 1.6rem;
+
+  &__label {
+    font-size: $font-s;
+    font-weight: 600;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: $gold-deep;
+    opacity: 0.6;
+    padding: 2rem 0;
+    text-align: center;
+    width: 100%;
+  }
+}
+
+// ─── MapGrid ─────────────────────────────────────────
+.map-grid {
+  position: relative;
+  display: inline-flex;
+  flex-direction: column;
+  border-radius: 1.2rem;
+  overflow: hidden;
+  box-shadow:
+    0 0.2rem 0.4rem rgba($ink, 0.06),
+    0 0.8rem 2.4rem rgba($ink, 0.1),
+    0 3.2rem 6.4rem rgba($ink, 0.08);
+  border: 0.1rem solid rgba($gold, 0.2);
+  animation: fadeSlideUp 0.5s ease both;
+  margin: 0 auto;
+  background-color: $sand;
+}
+
+@keyframes fadeSlideUp {
+  from {
+    opacity: 0;
+    transform: translateY(1.6rem);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.map-row {
+  display: flex;
+  line-height: 0;
+  font-size: 0;
+}
+
+.map-cell {
+  width: $cell-size;
+  height: $cell-size;
+  position: relative;
+  flex-shrink: 0;
+
+  &__img {
+    width: 100%;
+    height: 100%;
+    display: block;
+    image-rendering: pixelated;
+    user-select: none;
+    transition:
+      filter 0.2s ease,
+      transform 0.15s ease;
+    color: transparent;
+  }
+
+  // ── Available ────────────────────────────────
+  &--available {
+    cursor: pointer;
+
+    &::after {
+      content: "";
+      position: absolute;
+      top: 0.5rem;
+      right: 0.5rem;
+      width: 0.7rem;
+      height: 0.7rem;
+      border-radius: 50%;
+      background: $available;
+      box-shadow: 0 0 0 0.2rem rgba($available, 0.25);
+      animation: pulse-dot 2.2s ease-in-out infinite;
+      z-index: 2;
+    }
+
+    &:hover .map-cell__img {
+      filter: brightness(1.08) saturate(1.15);
+      transform: scale(1.04);
+    }
+
+    &:active .map-cell__img {
+      transform: scale(0.97);
+    }
+  }
+
+  // ── Booked ──────────────────────────────────
+  &--booked {
+    cursor: not-allowed;
+
+    &::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: $booked-bg;
+      z-index: 1;
+      pointer-events: none;
+    }
+
+    &::after {
+      content: "✕";
+      position: absolute;
+      top: 0.3rem;
+      right: 0.5rem;
+      font-size: $font-s;
+      font-family: "DM Sans", sans-serif;
+      color: $booked;
+      z-index: 2;
+      pointer-events: none;
+      opacity: 0.9;
+    }
+
+    .map-cell__img {
+      filter: grayscale(20%) sepia(40%) saturate(180%) hue-rotate(310deg)
+        brightness(0.82);
+    }
+  }
+
+  @include isMobile {
+    width: $cell-size-mobile;
+    height: $cell-size-mobile;
+  }
+}
+
+.map-pool {
+  position: absolute;
+  pointer-events: none;
+  display: block;
+  z-index: 1;
+}
+
+@keyframes pulse-dot {
+  0%,
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.5;
+    transform: scale(0.8);
+  }
+}

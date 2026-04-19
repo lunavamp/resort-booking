@@ -1,0 +1,18 @@
+{
+  "name": "resort-booking",
+  "version": "1.0.0",
+  "description": "This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.",
+  "scripts": {
+  "dev":          "node scripts/dev.mjs",
+  "dev:backend":  "npm run dev --prefix backend",
+  "dev:frontend": "npm run dev --prefix frontend",
+  "test":         "concurrently \"npm run test --prefix backend\" \"npm run test --prefix frontend\"",
+  "test:backend": "npm run test --prefix backend",
+  "test:frontend": "npm run test --prefix frontend"
+},
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "concurrently": "^9.2.1"
+  }
+}

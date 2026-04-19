@@ -1,0 +1,30 @@
+@use '../abstract/variables' as *;
+@use 'sass:color';
+@use '../abstract/mixins' as *;
+
+html {
+  font-size: 10px;
+  scroll-behavior: smooth;
+}
+
+body {
+  font: 400 1.8rem/1.45 $font-main;
+  background: color.adjust($sand, $lightness: 4%);
+  color: $ink;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+.container {
+    margin-left: auto;
+    margin-right: auto;
+    width: calc(100% - 20rem);
+
+    @include isMobile {
+      width: calc(100% - 4rem);
+    }
+}
+
+.section {
+  padding: 4.8rem 0;
+}
