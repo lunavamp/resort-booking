@@ -8,8 +8,6 @@ Interactive resort map with real-time cabana availability and poolside booking.
 > **Note:** Backend is hosted on Render free tier and may take up to 30 seconds
 > to wake up on the first request.
 
-![Resort Map](https://raw.githubusercontent.com/lunavamp/resort-booking/main/screenshot.png)
-
 
 ---
 
