@@ -9,7 +9,7 @@ Interactive resort map with real-time cabana availability and poolside booking.
 > to wake up on the first request.
 
 ![Resort Map](screenshot.png)
-<img width="1860" height="867" alt="image" src="https://github.com/user-attachments/assets/775e7f0e-80af-4276-8c2e-8d0bfa5a7378" />
+<img width="500" alt="booking resort" src="screenshot.png" />
 
 
 ---
