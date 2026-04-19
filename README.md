@@ -2,6 +2,9 @@
 
 Interactive resort map for poolside cabana booking.
 
+> **Note:** Backend is hosted on Render free tier and may take
+> up to 30 seconds to wake up on the first request.
+
 ## Quick Start
 
 ```bash
