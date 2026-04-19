@@ -1,43 +1,42 @@
 # Resort Cabana Booking
 
-Интерактивная карта курорта с бронированием кабан у бассейна.
+Interactive resort map for poolside cabana booking.
 
-## Быстрый старт
+## Quick Start
 
 ```bash
 npm install
 npm run dev
 ```
 
-### Альтернативные файлы
+### Alternative Files
 
 ```bash
 npm run dev -- --map ./path/to/map.ascii --bookings ./path/to/bookings.json
 ```
 
-### Тесты
+### Tests
 
 ```bash
-# Все тесты
+# All tests
 npm test
 
-# Только backend
+# Backend only
 npm run test:backend
 
-# Только frontend
+# Frontend only
 npm run test:frontend
 ```
 
-## Требования
+## Requirements
 
 - Node.js 18+
 - npm 9+
 
-## Стек
+## Stack
 
-| Слой     | Технологии                        |
-|----------|-----------------------------------|
-| Frontend | React 18, TypeScript, Vite, SCSS  |
-| Backend  | Fastify 5, TypeScript, tsx        |
+| Layer | Technologies |
+| :--- | :--- |
+| **Frontend** | React 18, TypeScript, Vite, SCSS |
+| **Backend** | Fastify 5, TypeScript, tsx |
 
-## Структура проекта

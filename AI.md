@@ -1,54 +1,37 @@
 # AI Process Documentation
 
-## Инструменты
+## Tools
 
-- **Claude (Anthropic)** — основной инструмент на всех этапах
+- **Claude (Anthropic)** — primary tool used throughout all stages
 
-## Как использовался AI
+## How AI Was Used
 
-### Этап 1 — Архитектура и скаффолдинг
-Попросила Claude предложить структуру проекта под ТЗ.
-Обсудили выбор Fastify vs Express, in-memory хранилище,
-подход к CLI аргументам.
+### Stage 1 — Architecture and Scaffolding
+Requested Claude to propose a project structure based on the specifications. Discussed the choice between Fastify and Express, in-memory storage, and the approach to CLI arguments.
 
-### Этап 2 — Backend
-Написали Express версию, затем переписали на Fastify.
-Claude помог с типизацией Fastify plugin options и
-передачей данных через `opts` вместо глобальных переменных.
+### Stage 2 — Backend
+Wrote the Express version, then refactored to Fastify. Claude assisted with Fastify plugin options typing and passing data via `opts` instead of global variables.
 
-### Этап 3 — Frontend: карта
-Основная итерация была вокруг логики тайлов дорожек.
-Алгоритм `getPathTile` подбирался через дебаггер —
-Claude предложил рендерить соседей (`TBLR`) прямо
-на ячейках вместо консоли. Потребовалось ~6 итераций
-чтобы правильно определить дефолтные ориентации картинок.
+### Stage 3 — Frontend: Map
+The main iteration centered around the path tile logic. The `getPathTile` algorithm was fine-tuned via a debugger — Claude suggested rendering neighbors (`TBLR`) directly on the cells instead of the console. It took ~6 iterations to correctly define the default image orientations.
 
-### Этап 4 — Frontend: компоненты
-Рефакторинг модала: вынос `Overlay`, `BookedView`, `SuccessView`
-в отдельные компоненты. Фикс бага с закрытием модала
-при исправлении ошибки (замена `onClick` на `onMouseDown`
-с проверкой `e.target === e.currentTarget`).
+### Stage 4 — Frontend: Components
+Refactoring the modal: extracted `Overlay`, `BookedView`, and `SuccessView` into separate components. Fixed a bug involving modal closure on error correction (replaced `onClick` with `onMouseDown` with a check for `e.target === e.currentTarget`).
 
-### Этап 5 — Стили
-Дизайн-направление: тропическое лакшери (песок, золото, лазурь).
-Шрифт Cormorant Garamond для заголовков + DM Sans для текста.
-SCSS с BEM, переменные и миксины вынесены в `abstract/`.
+### Stage 5 — Styles
+Design direction: Tropical luxury (sand, gold, azure). Cormorant Garamond font for headings + DM Sans for body text. SCSS with BEM; variables and mixins moved to `abstract/`.
 
-### Этап 6 — Архитектура фронтенда
-Разбивка на файлы: `types/`, `constants/`, отдельные
-компоненты для `MapCell`, `PoolImage`. Claude предложил
-`ResizeObserver` для динамического вычисления размера ячейки
-вместо захардкоженной константы.
+### Stage 6 — Frontend Architecture
+Breakdown into files: `types/`, `constants/`, and separate components for `MapCell`, `PoolImage`. Claude suggested using `ResizeObserver` for dynamic cell size calculation instead of a hardcoded constant.
 
-## Количество шагов
+## Number of Steps
 
-~40+ итераций в одном диалоге. Большинство итераций —
-уточнения и фиксы по скриншотам реального рендера.
+~40+ iterations in a single dialogue. The majority of iterations consisted of refinements and fixes based on screenshots of the actual render.
 
-## Что делала сама
+## What I Did Personally
 
-- Финальные решения по архитектуре
-- Выбор дизайн-направления
-- Проверка каждого шага в браузере
-- Структура файлов и нейминг
-- Интеграция всех частей
+- Final architectural decisions
+- Choice of design direction
+- Verification of every step in the browser
+- File structure and naming
+- Integration of all components
